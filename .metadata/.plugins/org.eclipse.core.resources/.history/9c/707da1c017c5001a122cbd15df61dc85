@@ -1,0 +1,634 @@
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import java.awt.CardLayout;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JPasswordField;
+import javax.swing.JButton;
+import javax.swing.JToolBar;
+import javax.swing.JSplitPane;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.FormSpecs;
+import com.jgoodies.forms.layout.RowSpec;
+import com.toedter.calendar.JCalendar;
+
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JScrollPane;
+import javax.swing.JComboBox;
+import java.awt.FlowLayout;
+import javax.swing.border.BevelBorder;
+import javax.swing.JTextArea;
+import java.awt.Font;
+import javax.swing.JTabbedPane;
+import javax.swing.JRadioButton;
+
+public class main extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField textUsername;
+	private JPasswordField passwordField;
+	private JTextField textField;
+
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					main frame = new main();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	public main() {
+		
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 856, 488);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(new CardLayout(0, 0));
+		
+		JPanel login = new JPanel();
+		contentPane.add(login, "login");
+		
+		JLabel lblAirlineTicketingSystem = new JLabel("Airline Ticketing System");
+		lblAirlineTicketingSystem.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		textUsername = new JTextField();
+		textUsername.setColumns(10);
+		
+		JLabel lblUsername = new JLabel("Username :");
+		lblUsername.setHorizontalAlignment(SwingConstants.TRAILING);
+		
+		JLabel lblPassword = new JLabel("Password :");
+		lblPassword.setHorizontalAlignment(SwingConstants.TRAILING);
+		
+		passwordField = new JPasswordField();
+		
+		JButton btnLogin = new JButton("Login");
+		
+		JButton btnClear = new JButton("Clear");
+		GroupLayout gl_login = new GroupLayout(login);
+		gl_login.setHorizontalGroup(
+			gl_login.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_login.createSequentialGroup()
+					.addGap(175)
+					.addGroup(gl_login.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblAirlineTicketingSystem, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
+						.addGroup(gl_login.createSequentialGroup()
+							.addComponent(lblUsername, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(textUsername, GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE))
+						.addGroup(gl_login.createSequentialGroup()
+							.addComponent(lblPassword, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(gl_login.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_login.createSequentialGroup()
+									.addComponent(btnLogin)
+									.addPreferredGap(ComponentPlacement.RELATED, 188, Short.MAX_VALUE)
+									.addComponent(btnClear))
+								.addComponent(passwordField))))
+					.addGap(174))
+		);
+		gl_login.setVerticalGroup(
+			gl_login.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_login.createSequentialGroup()
+					.addGap(69)
+					.addComponent(lblAirlineTicketingSystem)
+					.addGap(86)
+					.addGroup(gl_login.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblUsername)
+						.addComponent(textUsername, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(gl_login.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblPassword)
+						.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addGroup(gl_login.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnLogin)
+						.addComponent(btnClear))
+					.addContainerGap(136, Short.MAX_VALUE))
+		);
+		login.setLayout(gl_login);
+		
+		JSplitPane homepage = new JSplitPane();
+		contentPane.add(homepage, "homepage");
+		
+		JPanel ControlPanel = new JPanel();
+		homepage.setLeftComponent(ControlPanel);
+		GridBagLayout gbl_ControlPanel = new GridBagLayout();
+		gbl_ControlPanel.columnWidths = new int[]{45, 0};
+		gbl_ControlPanel.rowHeights = new int[]{14, 23, 23, 23, 0};
+		gbl_ControlPanel.columnWeights = new double[]{0.0, Double.MIN_VALUE};
+		gbl_ControlPanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		ControlPanel.setLayout(gbl_ControlPanel);
+		
+		JLabel lblMenu = new JLabel("Menu Bar");
+		lblMenu.setHorizontalAlignment(SwingConstants.CENTER);
+		GridBagConstraints gbc_lblMenu = new GridBagConstraints();
+		gbc_lblMenu.fill = GridBagConstraints.HORIZONTAL;
+		gbc_lblMenu.anchor = GridBagConstraints.NORTH;
+		gbc_lblMenu.insets = new Insets(0, 0, 5, 0);
+		gbc_lblMenu.gridx = 0;
+		gbc_lblMenu.gridy = 0;
+		ControlPanel.add(lblMenu, gbc_lblMenu);
+		
+		JButton btnHome = new JButton("Home");
+		GridBagConstraints gbc_btnHome = new GridBagConstraints();
+		gbc_btnHome.anchor = GridBagConstraints.NORTH;
+		gbc_btnHome.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnHome.insets = new Insets(0, 0, 5, 0);
+		gbc_btnHome.gridx = 0;
+		gbc_btnHome.gridy = 1;
+		ControlPanel.add(btnHome, gbc_btnHome);
+		
+		JButton btnBookTicket = new JButton("Book Ticket");
+		GridBagConstraints gbc_btnBookTicket = new GridBagConstraints();
+		gbc_btnBookTicket.anchor = GridBagConstraints.NORTH;
+		gbc_btnBookTicket.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnBookTicket.insets = new Insets(0, 0, 5, 0);
+		gbc_btnBookTicket.gridx = 0;
+		gbc_btnBookTicket.gridy = 2;
+		ControlPanel.add(btnBookTicket, gbc_btnBookTicket);
+		
+		JButton btnViewBookHistory = new JButton("View Book History");
+		GridBagConstraints gbc_btnViewBookHistory = new GridBagConstraints();
+		gbc_btnViewBookHistory.anchor = GridBagConstraints.NORTH;
+		gbc_btnViewBookHistory.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnViewBookHistory.gridx = 0;
+		gbc_btnViewBookHistory.gridy = 3;
+		ControlPanel.add(btnViewBookHistory, gbc_btnViewBookHistory);
+		
+		JPanel displayPanel = new JPanel();
+		homepage.setRightComponent(displayPanel);
+		displayPanel.setLayout(new CardLayout(0, 0));
+		
+		JPanel home = new JPanel();
+		displayPanel.add(home, "home");
+		
+		JLabel lblHome = new JLabel("Home");
+		home.add(lblHome);
+		
+		JPanel bookTicket = new JPanel();
+		displayPanel.add(bookTicket, "bookTicket");
+		bookTicket.setLayout(new CardLayout(0, 0));
+		
+		JScrollPane scrollSearchFlight = new JScrollPane();
+		bookTicket.add(scrollSearchFlight, "name_111896489955900");
+		
+		JPanel searchFlight = new JPanel();
+		scrollSearchFlight.setRowHeaderView(searchFlight);
+		
+		JLabel lblBookFlight = new JLabel("Book Flight");
+		
+		JLabel lblOrigin = new JLabel("Origin");
+		lblOrigin.setHorizontalAlignment(SwingConstants.TRAILING);
+		
+		JComboBox originComboBox = new JComboBox();
+		
+		JLabel lblArrival = new JLabel("Arival");
+		lblArrival.setHorizontalAlignment(SwingConstants.TRAILING);
+		
+		JComboBox ArrivalComboBox = new JComboBox();
+		
+		JCalendar calendar = new JCalendar();
+		calendar.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		
+		JLabel lblAdult = new JLabel("Adult");
+		lblAdult.setHorizontalAlignment(SwingConstants.TRAILING);
+		
+		JButton button = new JButton("-");
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setEditable(false);
+		
+		JButton button_1 = new JButton("+");
+		button_1.setFont(new Font("Tahoma", Font.PLAIN, 7));
+		
+		JLabel lblChildren = new JLabel("Children");
+		lblChildren.setHorizontalAlignment(SwingConstants.TRAILING);
+		
+		JButton button_2 = new JButton("-");
+		
+		JTextArea textArea_1 = new JTextArea();
+		textArea_1.setEditable(false);
+		
+		JButton button_3 = new JButton("+");
+		button_3.setFont(new Font("Tahoma", Font.PLAIN, 7));
+		
+		JLabel lblOku = new JLabel("OKU");
+		lblOku.setHorizontalAlignment(SwingConstants.TRAILING);
+		
+		JButton button_4 = new JButton("-");
+		
+		JTextArea textArea_2 = new JTextArea();
+		textArea_2.setEditable(false);
+		
+		JButton button_5 = new JButton("+");
+		button_5.setFont(new Font("Tahoma", Font.PLAIN, 7));
+		
+		JButton btnNext_1 = new JButton("Next");
+		
+		JLabel lblNewLabel = new JLabel("Total (RM)");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.TRAILING);
+		
+		JTextArea textTotal = new JTextArea();
+		textTotal.setEditable(false);
+
+		
+		GroupLayout gl_searchFlight = new GroupLayout(searchFlight);
+		gl_searchFlight.setHorizontalGroup(
+			gl_searchFlight.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_searchFlight.createSequentialGroup()
+					.addGap(39)
+					.addGroup(gl_searchFlight.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblBookFlight, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_searchFlight.createSequentialGroup()
+							.addGroup(gl_searchFlight.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_searchFlight.createSequentialGroup()
+									.addGroup(gl_searchFlight.createParallelGroup(Alignment.TRAILING)
+										.addGroup(gl_searchFlight.createSequentialGroup()
+											.addGap(8)
+											.addComponent(lblOrigin, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
+											.addGap(18)
+											.addComponent(originComboBox, 0, 211, Short.MAX_VALUE))
+										.addComponent(calendar, GroupLayout.PREFERRED_SIZE, 211, GroupLayout.PREFERRED_SIZE))
+									.addGap(18)
+									.addGroup(gl_searchFlight.createParallelGroup(Alignment.LEADING, false)
+										.addComponent(lblArrival, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
+										.addComponent(lblAdult, GroupLayout.PREFERRED_SIZE, 49, GroupLayout.PREFERRED_SIZE)
+										.addComponent(lblChildren, GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
+										.addComponent(lblOku, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+								.addComponent(lblNewLabel, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 58, GroupLayout.PREFERRED_SIZE))
+							.addGap(10)
+							.addGroup(gl_searchFlight.createParallelGroup(Alignment.TRAILING)
+								.addComponent(ArrivalComboBox, 0, 192, Short.MAX_VALUE)
+								.addGroup(gl_searchFlight.createParallelGroup(Alignment.LEADING)
+									.addGroup(gl_searchFlight.createSequentialGroup()
+										.addComponent(button_2, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+										.addGap(18)
+										.addComponent(textArea_1, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+										.addGap(18)
+										.addComponent(button_3, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
+									.addGroup(gl_searchFlight.createSequentialGroup()
+										.addComponent(button, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+										.addGap(18)
+										.addComponent(textArea, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+										.addGap(18)
+										.addComponent(button_1, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
+									.addGroup(gl_searchFlight.createSequentialGroup()
+										.addComponent(button_4, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+										.addGap(18)
+										.addComponent(textArea_2, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
+										.addGap(18)
+										.addComponent(button_5, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
+									.addGroup(Alignment.TRAILING, gl_searchFlight.createSequentialGroup()
+										.addComponent(textTotal, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+										.addGap(18)
+										.addComponent(btnNext_1)
+										.addPreferredGap(ComponentPlacement.RELATED))))))
+					.addGap(403))
+		);
+		gl_searchFlight.setVerticalGroup(
+			gl_searchFlight.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_searchFlight.createSequentialGroup()
+					.addGap(60)
+					.addComponent(lblBookFlight)
+					.addGap(18)
+					.addGroup(gl_searchFlight.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblOrigin)
+						.addComponent(originComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblArrival)
+						.addComponent(ArrivalComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(29)
+					.addGroup(gl_searchFlight.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_searchFlight.createSequentialGroup()
+							.addGroup(gl_searchFlight.createParallelGroup(Alignment.BASELINE)
+								.addComponent(button, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+								.addComponent(textArea, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(button_1, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblAdult))
+							.addGap(28)
+							.addGroup(gl_searchFlight.createParallelGroup(Alignment.TRAILING)
+								.addGroup(gl_searchFlight.createParallelGroup(Alignment.BASELINE)
+									.addComponent(button_2, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+									.addComponent(lblChildren))
+								.addGroup(gl_searchFlight.createParallelGroup(Alignment.LEADING)
+									.addGroup(gl_searchFlight.createSequentialGroup()
+										.addGap(9)
+										.addComponent(textArea_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+									.addComponent(button_3, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)))
+							.addGroup(gl_searchFlight.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_searchFlight.createSequentialGroup()
+									.addGap(19)
+									.addGroup(gl_searchFlight.createParallelGroup(Alignment.BASELINE)
+										.addComponent(button_4, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+										.addComponent(lblOku)))
+								.addGroup(gl_searchFlight.createSequentialGroup()
+									.addGap(18)
+									.addGroup(gl_searchFlight.createParallelGroup(Alignment.BASELINE)
+										.addComponent(textArea_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+										.addComponent(button_5, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)))))
+						.addComponent(calendar, GroupLayout.PREFERRED_SIZE, 211, GroupLayout.PREFERRED_SIZE))
+					.addGap(33)
+					.addGroup(gl_searchFlight.createParallelGroup(Alignment.BASELINE)
+						.addComponent(textTotal, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNewLabel)
+						.addComponent(btnNext_1))
+					.addContainerGap(191, Short.MAX_VALUE))
+		);
+		searchFlight.setLayout(gl_searchFlight);
+		
+		JScrollPane scrollSelectFlight = new JScrollPane();
+		bookTicket.add(scrollSelectFlight, "scrollSelectFlight");
+		
+		JPanel selectFlight = new JPanel();
+		scrollSelectFlight.setRowHeaderView(selectFlight);
+		
+		JLabel lblDepart = new JLabel("Depart");
+		
+		JTextArea textOrigin = new JTextArea();
+		textOrigin.setEditable(false);
+		
+		JLabel lblTo = new JLabel("To");
+		
+		JTextArea textArrival = new JTextArea();
+		textArrival.setEditable(false);
+		
+		JLabel lbl1000 = new JLabel("10.00");
+		
+		JLabel lbl1200 = new JLabel("12:00");
+		
+		JLabel lbl1400 = new JLabel("14:00");
+		
+		JLabel lbl1600 = new JLabel("16:00");
+		
+		JLabel lbl1800 = new JLabel("18:00");
+		
+		JLabel lblBoardTime = new JLabel("Board Time");
+		lblBoardTime.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		JTextArea textAreaHour = new JTextArea();
+		textAreaHour.setEditable(false);
+		
+		JLabel lblH = new JLabel("h");
+		
+		JTextArea textArea_3 = new JTextArea();
+		textArea_3.setEditable(false);
+		
+		JLabel lblM = new JLabel("m");
+		
+		JButton btnSelect = new JButton("Select this Flight");
+		
+		JButton btnSelectThisFlight = new JButton("Select this Flight");
+		
+		JButton btnSelectThisFlight_1 = new JButton("Select this Flight");
+		
+		JButton btnSelectThisFlight_2 = new JButton("Select this Flight");
+		
+		JButton btnSelectThisFlight_3 = new JButton("Select this Flight");
+		
+		JTextArea textArea_4 = new JTextArea();
+		textArea_4.setEditable(false);
+		
+		JLabel label = new JLabel("Total (RM)");
+		label.setHorizontalAlignment(SwingConstants.TRAILING);
+		
+		JButton btnNext_2 = new JButton("Next");
+
+		
+		JButton btnPrevious_2 = new JButton("Previous");
+		GroupLayout gl_selectFlight = new GroupLayout(selectFlight);
+		gl_selectFlight.setHorizontalGroup(
+			gl_selectFlight.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_selectFlight.createSequentialGroup()
+					.addGap(65)
+					.addComponent(lblDepart, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_selectFlight.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_selectFlight.createSequentialGroup()
+							.addComponent(lbl1800, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnSelectThisFlight_3, GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
+						.addGroup(gl_selectFlight.createSequentialGroup()
+							.addComponent(lbl1600, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnSelectThisFlight_2, GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
+						.addGroup(gl_selectFlight.createSequentialGroup()
+							.addComponent(lbl1400, GroupLayout.PREFERRED_SIZE, 53, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnSelectThisFlight_1, GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
+						.addGroup(gl_selectFlight.createSequentialGroup()
+							.addGroup(gl_selectFlight.createParallelGroup(Alignment.TRAILING, false)
+								.addComponent(lbl1000, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(lbl1200, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(gl_selectFlight.createParallelGroup(Alignment.LEADING)
+								.addComponent(btnSelectThisFlight, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(btnSelect, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+						.addGroup(gl_selectFlight.createSequentialGroup()
+							.addComponent(textOrigin, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(lblTo)))
+					.addGap(18)
+					.addComponent(textArrival, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)
+					.addGap(54)
+					.addComponent(textAreaHour, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblH)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(textArea_3, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblM, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+					.addGap(66))
+				.addGroup(Alignment.TRAILING, gl_selectFlight.createSequentialGroup()
+					.addGap(36)
+					.addComponent(btnPrevious_2, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, 210, Short.MAX_VALUE)
+					.addComponent(label, GroupLayout.PREFERRED_SIZE, 58, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(textArea_4, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(btnNext_2, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE)
+					.addGap(74))
+				.addGroup(gl_selectFlight.createSequentialGroup()
+					.addGap(136)
+					.addComponent(lblBoardTime, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(421, Short.MAX_VALUE))
+		);
+		gl_selectFlight.setVerticalGroup(
+			gl_selectFlight.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_selectFlight.createSequentialGroup()
+					.addGap(46)
+					.addGroup(gl_selectFlight.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblDepart)
+						.addComponent(textOrigin, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblTo)
+						.addComponent(textArrival, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textAreaHour, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblH)
+						.addComponent(textArea_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblM))
+					.addGap(32)
+					.addComponent(lblBoardTime)
+					.addGap(29)
+					.addGroup(gl_selectFlight.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lbl1000)
+						.addComponent(btnSelect))
+					.addGap(29)
+					.addGroup(gl_selectFlight.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lbl1200)
+						.addComponent(btnSelectThisFlight))
+					.addGap(27)
+					.addGroup(gl_selectFlight.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lbl1400)
+						.addComponent(btnSelectThisFlight_1))
+					.addGap(35)
+					.addGroup(gl_selectFlight.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lbl1600)
+						.addComponent(btnSelectThisFlight_2))
+					.addGap(35)
+					.addGroup(gl_selectFlight.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lbl1800)
+						.addComponent(btnSelectThisFlight_3))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_selectFlight.createParallelGroup(Alignment.BASELINE)
+						.addComponent(label)
+						.addComponent(textArea_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnNext_2)
+						.addComponent(btnPrevious_2))
+					.addContainerGap(81, Short.MAX_VALUE))
+		);
+		selectFlight.setLayout(gl_selectFlight);
+		
+		JScrollPane scrollGuestDetail = new JScrollPane();
+		bookTicket.add(scrollGuestDetail, "scrollGuestDetail");
+		
+		JPanel panel = new JPanel();
+		scrollGuestDetail.setViewportView(panel);
+		
+		JTextArea textGuest = new JTextArea();
+		
+		JLabel lblFullName = new JLabel("Full name :");
+		lblFullName.setHorizontalAlignment(SwingConstants.TRAILING);
+		
+		JCalendar dobCalendar = new JCalendar();
+		dobCalendar.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		
+		textField = new JTextField();
+		textField.setColumns(10);
+		
+		JLabel lblDob = new JLabel("DoB :");
+		lblDob.setHorizontalAlignment(SwingConstants.TRAILING);
+		
+		JRadioButton rdbtnMale = new JRadioButton("Male");
+		
+		JRadioButton rdbtnFemale = new JRadioButton("Female");
+		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(45)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(lblDob, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(dobCalendar, GroupLayout.PREFERRED_SIZE, 290, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(lblFullName, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(textField, GroupLayout.PREFERRED_SIZE, 290, GroupLayout.PREFERRED_SIZE)
+							.addGap(38)
+							.addComponent(rdbtnMale)
+							.addGap(18)
+							.addComponent(rdbtnFemale))
+						.addComponent(textGuest, GroupLayout.PREFERRED_SIZE, 122, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(288, Short.MAX_VALUE))
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(31)
+					.addComponent(textGuest, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblFullName)
+						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(rdbtnMale)
+						.addComponent(rdbtnFemale))
+					.addGap(18)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblDob)
+						.addComponent(dobCalendar, GroupLayout.PREFERRED_SIZE, 290, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(312, Short.MAX_VALUE))
+		);
+		panel.setLayout(gl_panel);
+		
+		JPanel payment = new JPanel();
+		bookTicket.add(payment, "name_122210843343500");
+		
+		JPanel viewBookHistory = new JPanel();
+		displayPanel.add(viewBookHistory, "viewBookHistory");
+		
+		JLabel lblBookHistory = new JLabel("Book History");
+		viewBookHistory.add(lblBookHistory);
+		
+		btnLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				CardLayout card = (CardLayout) contentPane.getLayout();
+				card.show(contentPane, "homepage");
+			}
+		});
+		
+		btnHome.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CardLayout card2 = (CardLayout) displayPanel.getLayout();
+				card2.show(displayPanel, "home");
+			}
+		});
+		
+		btnBookTicket.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CardLayout card2 = (CardLayout) displayPanel.getLayout();
+				card2.show(displayPanel, "bookTicket");
+			}
+		});
+		
+		btnViewBookHistory.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CardLayout card2 = (CardLayout) displayPanel.getLayout();
+				card2.show(displayPanel, "viewBookHistory");
+			}
+		});
+		
+		btnNext_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CardLayout card3 = (CardLayout) bookTicket.getLayout();
+				card3.show(bookTicket, "scrollSelectFlight");
+			}
+		});
+		
+		btnNext_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CardLayout card3 = (CardLayout) bookTicket.getLayout();
+				card3.show(bookTicket, "scrollGuestDetail");
+			}
+		});
+	}
+}

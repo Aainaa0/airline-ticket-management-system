@@ -1,0 +1,178 @@
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import java.awt.CardLayout;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JPasswordField;
+import javax.swing.JButton;
+import javax.swing.JToolBar;
+import javax.swing.JSplitPane;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.FormSpecs;
+import com.jgoodies.forms.layout.RowSpec;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+
+public class main extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField textUsername;
+	private JPasswordField passwordField;
+
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					main frame = new main();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	public main() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 780, 446);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(new CardLayout(0, 0));
+		
+		JPanel login = new JPanel();
+		contentPane.add(login, "name_35866115526300");
+		
+		JLabel lblAirlineTicketingSystem = new JLabel("Airline Ticketing System");
+		lblAirlineTicketingSystem.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		textUsername = new JTextField();
+		textUsername.setColumns(10);
+		
+		JLabel lblUsername = new JLabel("Username :");
+		lblUsername.setHorizontalAlignment(SwingConstants.TRAILING);
+		
+		JLabel lblPassword = new JLabel("Password :");
+		lblPassword.setHorizontalAlignment(SwingConstants.TRAILING);
+		
+		passwordField = new JPasswordField();
+		
+		JButton btnLogin = new JButton("Login");
+		
+		JButton btnClear = new JButton("Clear");
+		GroupLayout gl_login = new GroupLayout(login);
+		gl_login.setHorizontalGroup(
+			gl_login.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_login.createSequentialGroup()
+					.addGap(175)
+					.addGroup(gl_login.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblAirlineTicketingSystem, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
+						.addGroup(gl_login.createSequentialGroup()
+							.addComponent(lblUsername, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(textUsername, GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE))
+						.addGroup(gl_login.createSequentialGroup()
+							.addComponent(lblPassword, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(gl_login.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_login.createSequentialGroup()
+									.addComponent(btnLogin)
+									.addPreferredGap(ComponentPlacement.RELATED, 188, Short.MAX_VALUE)
+									.addComponent(btnClear))
+								.addComponent(passwordField))))
+					.addGap(174))
+		);
+		gl_login.setVerticalGroup(
+			gl_login.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_login.createSequentialGroup()
+					.addGap(69)
+					.addComponent(lblAirlineTicketingSystem)
+					.addGap(86)
+					.addGroup(gl_login.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblUsername)
+						.addComponent(textUsername, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(gl_login.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblPassword)
+						.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addGroup(gl_login.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnLogin)
+						.addComponent(btnClear))
+					.addContainerGap(136, Short.MAX_VALUE))
+		);
+		login.setLayout(gl_login);
+		
+		JSplitPane homepage = new JSplitPane();
+		contentPane.add(homepage, "name_36804970626300");
+		
+		JPanel ControlPanel = new JPanel();
+		homepage.setLeftComponent(ControlPanel);
+		GridBagLayout gbl_ControlPanel = new GridBagLayout();
+		gbl_ControlPanel.columnWidths = new int[]{45, 0};
+		gbl_ControlPanel.rowHeights = new int[]{14, 23, 23, 23, 0};
+		gbl_ControlPanel.columnWeights = new double[]{0.0, Double.MIN_VALUE};
+		gbl_ControlPanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		ControlPanel.setLayout(gbl_ControlPanel);
+		
+		JLabel lblMenu = new JLabel("Menu Bar");
+		lblMenu.setHorizontalAlignment(SwingConstants.CENTER);
+		GridBagConstraints gbc_lblMenu = new GridBagConstraints();
+		gbc_lblMenu.fill = GridBagConstraints.HORIZONTAL;
+		gbc_lblMenu.anchor = GridBagConstraints.NORTH;
+		gbc_lblMenu.insets = new Insets(0, 0, 5, 0);
+		gbc_lblMenu.gridx = 0;
+		gbc_lblMenu.gridy = 0;
+		ControlPanel.add(lblMenu, gbc_lblMenu);
+		
+		JButton btnHome = new JButton("Home");
+		GridBagConstraints gbc_btnHome = new GridBagConstraints();
+		gbc_btnHome.anchor = GridBagConstraints.NORTH;
+		gbc_btnHome.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnHome.insets = new Insets(0, 0, 5, 0);
+		gbc_btnHome.gridx = 0;
+		gbc_btnHome.gridy = 1;
+		ControlPanel.add(btnHome, gbc_btnHome);
+		
+		JButton btnBookTicket = new JButton("Book Ticket");
+		GridBagConstraints gbc_btnBookTicket = new GridBagConstraints();
+		gbc_btnBookTicket.anchor = GridBagConstraints.NORTH;
+		gbc_btnBookTicket.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnBookTicket.insets = new Insets(0, 0, 5, 0);
+		gbc_btnBookTicket.gridx = 0;
+		gbc_btnBookTicket.gridy = 2;
+		ControlPanel.add(btnBookTicket, gbc_btnBookTicket);
+		
+		JButton btnViewBookHistory = new JButton("View Book History");
+		GridBagConstraints gbc_btnViewBookHistory = new GridBagConstraints();
+		gbc_btnViewBookHistory.anchor = GridBagConstraints.NORTH;
+		gbc_btnViewBookHistory.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnViewBookHistory.gridx = 0;
+		gbc_btnViewBookHistory.gridy = 3;
+		ControlPanel.add(btnViewBookHistory, gbc_btnViewBookHistory);
+		
+		JPanel displayPanel = new JPanel();
+		homepage.setRightComponent(displayPanel);
+		displayPanel.setLayout(new CardLayout(0, 0));
+		
+		bookTicket bookTicket = new bookTicket();
+		
+		viewTicket viewTicket = new viewTicket(); 
+		
+		JPanel profile = new JPanel();
+		displayPanel.add(profile, "profile");
+		displayPanel.add(bookTicket,"bookTicket");
+		displayPanel.add(viewTicket,"viewTicket");
+		
+	}
+}

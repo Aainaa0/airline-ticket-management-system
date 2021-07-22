@@ -1,0 +1,154 @@
+package controller.validator;
+
+import java.util.Calendar;
+import java.util.Date;
+
+public class Validator {
+	public static String validate(String field, String value, boolean required) throws RequiredFieldException {
+		if (required && (value == null || value.trim().isEmpty()))
+			throw new RequiredFieldException(field);
+
+		value = value.trim();
+
+		return value;
+	}
+
+	public static String validatePassword(String field, String password, String confirmPassword, boolean required,
+			boolean isMatch) throws RequiredFieldException, PasswordMatchException {
+		if (required && (confirmPassword == null || confirmPassword.trim().isEmpty()))
+			throw new RequiredFieldException(field);
+
+		if (isMatch && (confirmPassword.equals(password) == false)) {
+			throw new PasswordMatchException(field);
+		}
+
+		confirmPassword = confirmPassword.trim();
+
+		return confirmPassword;
+	}
+
+	public static boolean validateDate(String field, Date date, boolean required) throws MinimumDateException {
+		Date currDate = new Date();
+		//System.out.println("current date: " + currDate);
+		
+		int dateMargin = getZeroTimeDate(date).compareTo(getZeroTimeDate(currDate));
+		
+		if (dateMargin<0)
+		{
+			if (required && date.before(currDate)) {
+				throw new MinimumDateException(field);
+			}
+		}
+		return false;
+	}
+
+	public static double validate(String field, String value, boolean required, boolean hasMinimum, double minimum)
+			throws RequiredFieldException, InvalidNumberException, MinimumNumberException {
+		if (required && (value == null || value.trim().isEmpty()))
+			throw new RequiredFieldException(field);
+
+		value = value.trim();
+		double number = 0;
+
+		try {
+			number = Double.parseDouble(value);
+		} catch (NumberFormatException e) {
+			throw new InvalidNumberException(field);
+		}
+
+		if (hasMinimum && number < minimum)
+			throw new MinimumNumberException(field, minimum);
+
+		return number;
+	}
+	
+	public static double validatePassword(String field, String value, boolean required, boolean hasMaximum, int maximum)
+			throws RequiredFieldException,  MaximumNumberException {
+		if (required && (value == null || value.trim().isEmpty()))
+			throw new RequiredFieldException(field);
+
+		value = value.trim();
+		double number = 0;
+
+		if (hasMaximum && value.length() < maximum)
+			throw new MaximumNumberException(field, maximum);
+
+		return number;
+	}
+
+	public static double validate(String field, String value, boolean required, boolean hasMinimum, double minimum,
+			boolean hasMaximum, double maximum)
+			throws RequiredFieldException, InvalidNumberException, MinimumNumberException, MaximumNumberException {
+		if (required && (value == null || value.trim().isEmpty()))
+			throw new RequiredFieldException(field);
+
+		value = value.trim();
+		double number = 0;
+
+		try {
+			number = Double.parseDouble(value);
+		} catch (NumberFormatException e) {
+			throw new InvalidNumberException(field);
+		}
+
+		if (hasMinimum && number < minimum)
+			throw new MinimumNumberException(field, minimum);
+
+		if (hasMaximum && number > maximum)
+			throw new MaximumNumberException(field, maximum);
+		
+		return number;
+	}
+	
+	public static double validate(String field, String value, boolean required, boolean hasDigit, int digit)
+			throws RequiredFieldException, InvalidNumberException, RequiredDigitException {
+		if (required && (value == null || value.trim().isEmpty()))
+			throw new RequiredFieldException(field);
+
+		value = value.trim();
+		double number = 0;
+
+		try {
+			number = Double.parseDouble(value);
+		} catch (NumberFormatException e) {
+			throw new InvalidNumberException(field);
+		}
+
+		if (hasDigit && value.length()!= digit)
+			throw new RequiredDigitException(field, digit);
+
+		return number;
+	}
+	
+	public static double validate2(String field, String value, boolean required)
+			throws RequiredFieldException, InvalidNumberException {
+		if (required && (value == null || value.trim().isEmpty()))
+			throw new RequiredFieldException(field);
+
+		value = value.trim();
+		double number = 0;
+
+		try {
+			number = Double.parseDouble(value);
+		} catch (NumberFormatException e) {
+			throw new InvalidNumberException(field);
+		}
+		
+		return number;
+	}
+	
+	public static Date getZeroTimeDate(Date fecha) {
+	    Date res = fecha;
+	    Calendar calendar = Calendar.getInstance();
+
+	    calendar.setTime( fecha );
+	    calendar.set(Calendar.HOUR_OF_DAY, 0);
+	    calendar.set(Calendar.MINUTE, 0);
+	    calendar.set(Calendar.SECOND, 0);
+	    calendar.set(Calendar.MILLISECOND, 0);
+
+	    res = calendar.getTime();
+
+	    return res;
+	}
+}

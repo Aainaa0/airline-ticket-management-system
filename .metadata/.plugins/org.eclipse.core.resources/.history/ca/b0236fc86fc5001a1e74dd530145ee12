@@ -1,0 +1,12 @@
+package controller.validator;
+
+public class ArrivalAndOriginSameException {
+
+	private static final long serialVersionUID = 1L;
+	
+	public ArrivalAndOriginSameException(String field)
+	{
+		super(field + " is required.");
+	}
+
+}

@@ -1,0 +1,141 @@
+package controller.validator;
+
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.util.Date;
+
+import javax.swing.JOptionPane;
+
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.Statement;
+
+public class Validator {
+	public static String validate(String field, String value, boolean required) throws RequiredFieldException {
+		if (required && (value == null || value.trim().isEmpty()))
+			throw new RequiredFieldException(field);
+
+		value = value.trim();
+
+		return value;
+	}
+
+	public static String validatePassword(String field, String password, String confirmPassword, boolean required,
+			boolean isMatch) throws RequiredFieldException, PasswordMatchException {
+		if (required && (confirmPassword == null || confirmPassword.trim().isEmpty()))
+			throw new RequiredFieldException(field);
+
+		if (isMatch && (confirmPassword.equals(password) == false)) {
+			throw new PasswordMatchException(field);
+		}
+
+		confirmPassword = confirmPassword.trim();
+
+		return confirmPassword;
+	}
+
+	public static boolean validateDate(String field, Date date, boolean required) throws MaximumDateException {
+		Date currDate = new Date();
+		System.out.println("current date: " + currDate);
+		if (required && date.after(currDate)) {
+			throw new MaximumDateException(field);
+		}
+
+		return false;
+	}
+
+	public static double validate(String field, String value, boolean required, boolean hasMinimum, double minimum)
+			throws RequiredFieldException, InvalidNumberException, MinimumNumberException {
+		if (required && (value == null || value.trim().isEmpty()))
+			throw new RequiredFieldException(field);
+
+		value = value.trim();
+		double number = 0;
+
+		try {
+			number = Double.parseDouble(value);
+		} catch (NumberFormatException e) {
+			throw new InvalidNumberException(field);
+		}
+
+		if (hasMinimum && number < minimum)
+			throw new MinimumNumberException(field, minimum);
+
+		return number;
+	}
+	
+	public static double validatePassword(String field, String value, boolean required, boolean hasMaximum, int maximum)
+			throws RequiredFieldException,  MaximumNumberException {
+		if (required && (value == null || value.trim().isEmpty()))
+			throw new RequiredFieldException(field);
+
+		value = value.trim();
+		double number = 0;
+
+		if (hasMaximum && value.length() < maximum)
+			throw new MaximumNumberException(field, maximum);
+
+		return number;
+	}
+
+	public static double validate(String field, String value, boolean required, boolean hasMinimum, double minimum,
+			boolean hasMaximum, double maximum)
+			throws RequiredFieldException, InvalidNumberException, MinimumNumberException, MaximumNumberException {
+		if (required && (value == null || value.trim().isEmpty()))
+			throw new RequiredFieldException(field);
+
+		value = value.trim();
+		double number = 0;
+
+		try {
+			number = Double.parseDouble(value);
+		} catch (NumberFormatException e) {
+			throw new InvalidNumberException(field);
+		}
+
+		if (hasMinimum && number < minimum)
+			throw new MinimumNumberException(field, minimum);
+
+		if (hasMaximum && number > maximum)
+			throw new MaximumNumberException(field, maximum);
+		
+		return number;
+	}
+	
+	public static double validate(String field, String value, boolean required, boolean hasDigit, int digit)
+			throws RequiredFieldException, InvalidNumberException, RequiredDigitException {
+		if (required && (value == null || value.trim().isEmpty()))
+			throw new RequiredFieldException(field);
+
+		value = value.trim();
+		double number = 0;
+
+		try {
+			number = Double.parseDouble(value);
+		} catch (NumberFormatException e) {
+			throw new InvalidNumberException(field);
+		}
+
+		if (hasDigit && value.length()!= digit)
+			throw new RequiredDigitException(field, digit);
+
+		return number;
+	}
+	
+	public static double validate2(String field, String value, boolean required)
+			throws RequiredFieldException, InvalidNumberException {
+		if (required && (value == null || value.trim().isEmpty()))
+			throw new RequiredFieldException(field);
+
+		value = value.trim();
+		double number = 0;
+
+		try {
+			number = Double.parseDouble(value);
+		} catch (NumberFormatException e) {
+			throw new InvalidNumberException(field);
+		}
+		
+		return number;
+	}
+	
+}

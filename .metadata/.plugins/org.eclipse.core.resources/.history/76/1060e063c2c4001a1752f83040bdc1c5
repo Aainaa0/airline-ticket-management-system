@@ -1,0 +1,62 @@
+import javax.swing.JPanel;
+import javax.swing.JSplitPane;
+import java.awt.BorderLayout;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JButton;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+
+public class bookTicket extends JPanel {
+
+	public bookTicket() {
+		setLayout(new BorderLayout(0, 0));
+		
+		JSplitPane splitPane = new JSplitPane();
+		splitPane.setResizeWeight(1.0);
+		splitPane.setOrientation(JSplitPane.VERTICAL_SPLIT);
+		add(splitPane, BorderLayout.CENTER);
+		
+		JPanel panel = new JPanel();
+		splitPane.setRightComponent(panel);
+		GridBagLayout gbl_panel = new GridBagLayout();
+		gbl_panel.columnWidths = new int[]{62, 112, 273, 112, 112, 0};
+		gbl_panel.rowHeights = new int[]{37, 0, 23, 0};
+		gbl_panel.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+		panel.setLayout(gbl_panel);
+		
+		JButton btnPrevious = new JButton("Previous");
+		GridBagConstraints gbc_btnPrevious = new GridBagConstraints();
+		gbc_btnPrevious.anchor = GridBagConstraints.NORTH;
+		gbc_btnPrevious.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnPrevious.insets = new Insets(0, 0, 5, 5);
+		gbc_btnPrevious.gridx = 1;
+		gbc_btnPrevious.gridy = 1;
+		panel.add(btnPrevious, gbc_btnPrevious);
+		
+		JButton btnNext = new JButton("Next");
+		GridBagConstraints gbc_btnNext = new GridBagConstraints();
+		gbc_btnNext.anchor = GridBagConstraints.NORTH;
+		gbc_btnNext.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnNext.insets = new Insets(0, 0, 5, 5);
+		gbc_btnNext.gridx = 3;
+		gbc_btnNext.gridy = 1;
+		panel.add(btnNext, gbc_btnNext);
+		
+		JButton btnFinish = new JButton("Finish");
+		GridBagConstraints gbc_btnFinish = new GridBagConstraints();
+		gbc_btnFinish.insets = new Insets(0, 0, 5, 0);
+		gbc_btnFinish.anchor = GridBagConstraints.NORTH;
+		gbc_btnFinish.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnFinish.gridx = 4;
+		gbc_btnFinish.gridy = 1;
+		panel.add(btnFinish, gbc_btnFinish);
+		
+		JPanel panel_1 = new JPanel();
+		splitPane.setLeftComponent(panel_1);
+
+	}
+}

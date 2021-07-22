@@ -1,0 +1,158 @@
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.SwingConstants;
+
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.FormSpecs;
+import com.jgoodies.forms.layout.RowSpec;
+import com.toedter.calendar.JCalendar;
+
+public class bookTicket extends JPanel {
+
+	public bookTicket() {
+		setLayout(new BorderLayout(0, 0));
+		
+		JSplitPane splitPane = new JSplitPane();
+		splitPane.setOrientation(JSplitPane.VERTICAL_SPLIT);
+		add(splitPane, BorderLayout.CENTER);
+		
+		JPanel controlPanel = new JPanel();
+		splitPane.setLeftComponent(controlPanel);
+		controlPanel.setLayout(new FormLayout(new ColumnSpec[] {
+				FormSpecs.RELATED_GAP_COLSPEC,
+				FormSpecs.DEFAULT_COLSPEC,
+				FormSpecs.RELATED_GAP_COLSPEC,
+				FormSpecs.DEFAULT_COLSPEC,
+				FormSpecs.RELATED_GAP_COLSPEC,
+				FormSpecs.DEFAULT_COLSPEC,
+				FormSpecs.RELATED_GAP_COLSPEC,
+				ColumnSpec.decode("50dlu"),
+				FormSpecs.RELATED_GAP_COLSPEC,
+				FormSpecs.DEFAULT_COLSPEC,
+				FormSpecs.RELATED_GAP_COLSPEC,
+				FormSpecs.DEFAULT_COLSPEC,
+				FormSpecs.RELATED_GAP_COLSPEC,
+				ColumnSpec.decode("50dlu"),
+				FormSpecs.RELATED_GAP_COLSPEC,
+				FormSpecs.DEFAULT_COLSPEC,
+				FormSpecs.RELATED_GAP_COLSPEC,
+				FormSpecs.DEFAULT_COLSPEC,
+				FormSpecs.RELATED_GAP_COLSPEC,
+				ColumnSpec.decode("50dlu"),
+				FormSpecs.RELATED_GAP_COLSPEC,
+				FormSpecs.DEFAULT_COLSPEC,
+				FormSpecs.RELATED_GAP_COLSPEC,
+				FormSpecs.DEFAULT_COLSPEC,
+				FormSpecs.RELATED_GAP_COLSPEC,
+				ColumnSpec.decode("50dlu"),},
+			new RowSpec[] {
+				FormSpecs.RELATED_GAP_ROWSPEC,
+				FormSpecs.DEFAULT_ROWSPEC,
+				FormSpecs.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("50dlu"),
+				FormSpecs.RELATED_GAP_ROWSPEC,
+				FormSpecs.DEFAULT_ROWSPEC,}));
+		
+		JButton btnSearchFlight = new JButton("icon");
+		controlPanel.add(btnSearchFlight, "8, 4, fill, fill");
+		
+		JButton btnSelectFlight = new JButton("icon");
+		controlPanel.add(btnSelectFlight, "14, 4, fill, fill");
+		
+		JButton btnGuestDetail = new JButton("icon");
+		controlPanel.add(btnGuestDetail, "20, 4, fill, fill");
+		
+		JButton btnPayment = new JButton("icon");
+		controlPanel.add(btnPayment, "26, 4, fill, fill");
+		
+		JLabel lblSearchFlight = new JLabel("Search Flight");
+		lblSearchFlight.setHorizontalAlignment(SwingConstants.CENTER);
+		controlPanel.add(lblSearchFlight, "8, 6");
+		
+		JLabel lblSelectFlight = new JLabel("Select Flight");
+		lblSelectFlight.setHorizontalAlignment(SwingConstants.CENTER);
+		controlPanel.add(lblSelectFlight, "14, 6");
+		
+		JLabel lblGuestDetail = new JLabel("Guest Detail");
+		lblGuestDetail.setHorizontalAlignment(SwingConstants.CENTER);
+		controlPanel.add(lblGuestDetail, "20, 6");
+		
+		JLabel lblPayment = new JLabel("Payment");
+		lblPayment.setHorizontalAlignment(SwingConstants.CENTER);
+		controlPanel.add(lblPayment, "26, 6");
+		
+		JPanel displayPanel = new JPanel();
+		splitPane.setRightComponent(displayPanel);
+		displayPanel.setLayout(new CardLayout(0, 0));
+		
+		JPanel page1 = new JPanel();
+		displayPanel.add(page1, "name_85894236232200");
+		page1.setLayout(new CardLayout(0, 0));
+		
+		JScrollPane scrollPane = new JScrollPane();
+		page1.add(scrollPane, "name_85912232096500");
+		
+		JPanel panel = new JPanel();
+		scrollPane.setViewportView(panel);
+		
+		JLabel lblBookFlight = new JLabel("Book Flight");
+		
+		JLabel lblFrom = new JLabel("From");
+		
+		JComboBox fromComboBox = new JComboBox();
+		
+		JLabel lblTo = new JLabel("To");
+		
+		JComboBox toComboBox = new JComboBox();
+		
+		JCalendar calendar = new JCalendar();
+		
+		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(82)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblBookFlight)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblFrom)
+								.addComponent(fromComboBox, GroupLayout.PREFERRED_SIZE, 211, GroupLayout.PREFERRED_SIZE)
+								.addComponent(calendar, GroupLayout.PREFERRED_SIZE, 211, GroupLayout.PREFERRED_SIZE))
+							.addGap(42)
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+								.addComponent(toComboBox, GroupLayout.PREFERRED_SIZE, 211, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblTo, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))))
+					.addContainerGap(93, Short.MAX_VALUE))
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(38)
+					.addComponent(lblBookFlight)
+					.addGap(18)
+					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblFrom)
+						.addComponent(lblTo))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(fromComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(toComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(calendar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(186, Short.MAX_VALUE))
+		);
+		panel.setLayout(gl_panel);
+
+	}
+}
